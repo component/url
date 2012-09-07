@@ -12,6 +12,11 @@
 ```js
 var url = require('url');
 url.parse('http://example.com:3000/store/shoes?sort=desc');
+```
+
+yields:
+
+```js
 {
   hash: ""
   host: "example.com:3000"
