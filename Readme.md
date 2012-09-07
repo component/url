@@ -29,6 +29,20 @@ yields:
 }
 ```
 
+## API
+
+### url.parse(string)
+
+  Parse the given url `string`.
+
+### url.isAbsolute(string)
+
+  Check if the given url `string` is absolute (has a scheme specified).
+
+### url.isRelative(string)
+
+  Check if the given url `string` is relative.
+
 ## Note
 
   This url "parser" uses an __A__ tag, this means that when
