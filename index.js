@@ -13,6 +13,7 @@ exports.parse = function(url){
   return {
     href: a.href,
     host: a.host,
+    port: a.port,
     hash: a.hash,
     hostname: a.hostname,
     pathname: a.pathname,
@@ -46,4 +47,19 @@ exports.isAbsolute = function(url){
 
 exports.isRelative = function(url){
   return ! exports.isAbsolute(url);
+};
+
+/**
+ * Check if `url` is cross domain.
+ *
+ * @param {String} url
+ * @return {Boolean}
+ * @api public
+ */
+
+exports.isCrossDomain = function(url){
+  url = exports.parse(url);
+  return url.hostname != location.hostname
+    || url.port != location.port
+    || url.protocol != location.protocol;
 };

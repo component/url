@@ -4,6 +4,9 @@
   "description": "url parser",
   "version": "0.0.1",
   "keywords": ["url", "utility", "parser"],
+  "development": {
+    "component/assert": "*"
+  },
   "scripts": [
     "index.js"
   ]

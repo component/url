@@ -1,10 +1,40 @@
 
 var url = require('url')
+  , assert = require('component-assert')
   , parse = url.parse;
 
-function assert(expr) {
-  if (!expr) throw new Error('assertion error');
-}
+describe('url.isCrossDomain(str)', function(){
+  describe('when everything matches', function(){
+    it('should return false', function(){
+      assert(false == url.isCrossDomain('/hello/world'));
+      assert(false == url.isCrossDomain('http://localhost:3000/hello/world'));
+    })
+  })
+
+  describe('when hostname mismatches', function(){
+    it('should return true', function(){
+      assert(true == url.isCrossDomain('https://example.com:3000/hello/world'));
+    })
+  })
+
+  describe('when protocol mismatches', function(){
+    it('should return true', function(){
+      assert(true == url.isCrossDomain('https://localhost:3000/hello/world'));
+    })
+  })
+
+  describe('when port mismatches', function(){
+    it('should return true', function(){
+      assert(true == url.isCrossDomain('http://localhost:3001/hello/world'));
+    })
+  })
+
+  describe('when port is missing', function(){
+    it('should return true', function(){
+      assert(true == url.isCrossDomain('http://localhost/hello/world'));
+    })
+  })
+})
 
 describe('url.isAbsolute(str)', function(){
   it('should support scheme://', function(){
