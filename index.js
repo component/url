@@ -17,7 +17,7 @@ exports.parse = function(url){
     hash: a.hash,
     hostname: a.hostname || location.hostname,
     pathname: a.pathname,
-    protocol: (!a.protocol || a.protocol === ':' ? location.protocol : a.protocol),
+    protocol: (!a.protocol || ':' == a.protocol ? location.protocol : a.protocol),
     search: a.search,
     query: a.search.slice(1)
   };
@@ -32,7 +32,7 @@ exports.parse = function(url){
  */
 
 exports.isAbsolute = function(url){
-  return (url.indexOf('//') === 0 || !!~url.indexOf('://'));
+  return 0 == url.indexOf('//') || !!~url.indexOf('://');
 };
 
 /**
@@ -57,7 +57,7 @@ exports.isRelative = function(url){
 
 exports.isCrossDomain = function(url){
   url = exports.parse(url);
-  return url.hostname !== location.hostname ||
-         url.port !== location.port ||
-         url.protocol !== location.protocol;
+  return url.hostname !== location.hostname
+    || url.port !== location.port
+    || url.protocol !== location.protocol;
 };
