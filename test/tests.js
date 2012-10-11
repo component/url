@@ -7,31 +7,31 @@ describe('url.isCrossDomain(str)', function(){
   describe('when everything matches', function(){
     it('should return false', function(){
       assert(false == url.isCrossDomain('/hello/world'));
-      assert(false == url.isCrossDomain('http://localhost:3000/hello/world'));
+      assert(false == url.isCrossDomain(location.protocol + '//' + location.host + '/hello/world'));
     })
   })
 
   describe('when hostname mismatches', function(){
     it('should return true', function(){
-      assert(true == url.isCrossDomain('https://example.com:3000/hello/world'));
+      assert(true == url.isCrossDomain(location.protocol + '//example.com' + (location.port ? ':' + location.port : '') + '/hello/world'));
     })
   })
 
   describe('when protocol mismatches', function(){
     it('should return true', function(){
-      assert(true == url.isCrossDomain('https://localhost:3000/hello/world'));
+      assert(true == url.isCrossDomain('https://' + location.host + '/hello/world'));
     })
   })
 
   describe('when port mismatches', function(){
     it('should return true', function(){
-      assert(true == url.isCrossDomain('http://localhost:3001/hello/world'));
+      assert(true == url.isCrossDomain(location.protocol + '//' + location.hostname + ':' + (+location.port + 1) + '/hello/world'));
     })
   })
 
   describe('when port is missing', function(){
     it('should return true', function(){
-      assert(true == url.isCrossDomain('http://localhost/hello/world'));
+      assert(true == url.isCrossDomain(location.protocol + '//' + location.port + '/hello/world'));
     })
   })
 })
