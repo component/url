@@ -17,7 +17,7 @@ exports.parse = function(url){
     hash: a.hash,
     hostname: a.hostname || location.hostname,
     pathname: a.pathname,
-    protocol: (!a.protocol || ':' == a.protocol ? location.protocol : a.protocol),
+    protocol: !a.protocol || ':' == a.protocol ? location.protocol : a.protocol,
     search: a.search,
     query: a.search.slice(1)
   };
