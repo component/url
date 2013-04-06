@@ -13,7 +13,7 @@ exports.parse = function(url){
   return {
     href: a.href,
     host: a.host || location.host,
-    port: a.port || location.port,
+    port: ("0" === a.port || "" === a.port) ? location.port : a.port,
     hash: a.hash,
     hostname: a.hostname || location.hostname,
     pathname: a.pathname.charAt(0) != '/' ? '/' + a.pathname : a.pathname,
