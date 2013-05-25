@@ -1,4 +1,3 @@
-
 # url
 
   url parser.
@@ -50,7 +49,7 @@ yields:
 
 ## Note
 
-  This url "parser" uses an __A__ tag, this means that when
+  This url "parser" uses an `<a>` tag, this means that when
   a relative url is given, such as "/foo", it becomes relative
   to the current domain / path, because the browser resolves it
   as it normally would.
