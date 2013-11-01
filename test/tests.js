@@ -96,6 +96,11 @@ describe('url.parse(str)', function(){
     assert('google.com:3000' == url.host);
   })
 
+  it('should support .origin', function(){
+    var url = parse('http://google.com:3000/foo/bar');
+    assert('http://google.com:3000' == url.origin);
+  })
+
   it('should support .search', function(){
     var url = parse('http://google.com:3000/foo/bar?name=tobi');
     assert('?name=tobi' == url.search);
