@@ -96,6 +96,17 @@ describe('url.parse(str)', function(){
     assert('google.com:3000' == url.host);
   })
 
+  it('should support .port', function(){
+    var url = parse('http://google.com/foo/bar');
+    var ur2 = parse('https://google.com/foo/bar');
+    var ur3 = parse('http://google.com:80/foo/bar');
+    var ur4 = parse('http://google.com:3000/foo/bar');
+    assert(80 == url.port);
+    assert(443 == ur2.port);
+    assert(80 == ur3.port);
+    assert(3000 == ur4.port);
+  })
+
   it('should support .search', function(){
     var url = parse('http://google.com:3000/foo/bar?name=tobi');
     assert('?name=tobi' == url.search);

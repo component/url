@@ -13,7 +13,7 @@ exports.parse = function(url){
   return {
     href: a.href,
     host: a.host || location.host,
-    port: ('0' === a.port || '' === a.port) ? location.port : a.port,
+    port: ('0' === a.port || '' === a.port) ? port(a.protocol) : a.port,
     hash: a.hash,
     hostname: a.hostname || location.hostname,
     pathname: a.pathname.charAt(0) != '/' ? '/' + a.pathname : a.pathname,
@@ -61,3 +61,21 @@ exports.isCrossDomain = function(url){
     || url.port !== location.port
     || url.protocol !== location.protocol;
 };
+
+/**
+ * Return default port for `protocol`.
+ *
+ * @param  {String} protocol
+ * @return {String}
+ * @api private
+ */
+function port (protocol){
+  switch (protocol) {
+    case 'http:':
+      return 80;
+    case 'https:':
+      return 443;
+    default:
+      return location.port;
+  }
+}
