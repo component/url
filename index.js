@@ -58,7 +58,7 @@ exports.isRelative = function(url){
 exports.isCrossDomain = function(url){
   url = exports.parse(url);
   return url.hostname !== location.hostname
-    || url.port !== location.port
+    || url.port !== (location.port || 80)
     || url.protocol !== location.protocol;
 };
 
