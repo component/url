@@ -2,7 +2,7 @@
   "name": "url",
   "repo": "component/url",
   "description": "url parser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": ["url", "utility", "parser"],
   "development": {
     "component/assert": "*"
