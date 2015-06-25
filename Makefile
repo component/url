@@ -11,4 +11,7 @@ clean:
 test:
 	serve .
 
-.PHONY: clean test
+test-http:
+	serve -p 80 .
+
+.PHONY: clean test test-http

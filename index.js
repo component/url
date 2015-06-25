@@ -59,7 +59,7 @@ exports.isCrossDomain = function(url){
   url = exports.parse(url);
   var location = exports.parse(window.location.href);
   return url.hostname !== location.hostname
-    || url.port !== location.port
+    || url.port !== (location.port || 80)
     || url.protocol !== location.protocol;
 };
 
